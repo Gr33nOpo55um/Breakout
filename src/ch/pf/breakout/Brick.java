@@ -82,7 +82,27 @@ public class Brick extends BaseObjects {
 		Graphics2D g2d = (Graphics2D) g;
 
 		Rectangle2D.Double rectangle = new Rectangle2D.Double(x, y, 40, 20);
-		g2d.setColor(Color.orange);
+		switch (specialFunction) {
+		case 0:
+			g2d.setColor(Color.orange);
+			break;
+		case 1:
+			g2d.setColor(Color.MAGENTA);
+			break;
+		case 2:
+			g2d.setColor(Color.CYAN);
+			break;
+		case 3:
+			g2d.setColor(Color.BLACK);
+			break;
+		case 4:
+			g2d.setColor(Color.blue);
+			break;
+		case 5: // additional ball
+			g2d.setColor(Color.red);
+			break;
+
+		}
 		g2d.fill(rectangle);
 	}
 

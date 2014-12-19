@@ -91,30 +91,24 @@ public class Board extends JPanel implements ActionListener {
 				+ " Points", 20, 40);
 
 		// draw bricks
+
 		for (Brick brick : bricks) {
-			for (int i = 0; i < 5; i++) {
-				for (int j = 0; j < 6; j++) {
-					if (!brick.isDestroyed()) {
-						xBrick = j * 80 + 30;
-						yBrick = i * 30 + 50;
-						brick.paint(g, this, brick.x, brick.y);
-					}
-					// g.drawImage(brick.getImage(), brick.getX(), brick.getY(),
-					// brick.getWidth(), brick.getHeight(), this);
-				}
-			}
-
-			paddle.paint(g, this);
-			ball.paint(g, this);
-
-			if (ball.gameOver == true) {
-				int fontsizeGameOver = 30;
-				g.setColor(Color.red);
-				g.setFont(new Font("Arial", Font.BOLD, fontsizeGameOver));
-				g.drawString("Game over", BreakoutSettings.FrameWidth / 3, BreakoutSettings.frameHeight / 2);
-
+			if (!brick.isDestroyed()) {
+				brick.paint(g, this, brick.x, brick.y);
 			}
 		}
+
+		paddle.paint(g, this);
+		ball.paint(g, this);
+
+		if (ball.gameOver == true) {
+			int fontsizeGameOver = 30;
+			g.setColor(Color.red);
+			g.setFont(new Font("Arial", Font.BOLD, fontsizeGameOver));
+			g.drawString("Game over", BreakoutSettings.FrameWidth / 3, BreakoutSettings.frameHeight / 2);
+
+		}
+
 	}
 
 	class TAdapter extends KeyAdapter {

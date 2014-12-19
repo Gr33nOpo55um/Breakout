@@ -1,6 +1,5 @@
 package ch.pf.breakout;
 
-import java.awt.Image;
 
 public class BaseObjects {
 
@@ -11,7 +10,7 @@ public class BaseObjects {
 	public static int ballSpeed = 3;
 
 	// Maximum right positions
-	//public static int PADDLE_RIGHT = 340;
+	// public static int PADDLE_RIGHT = 340;
 	public static final int BALL_RIGHT = 500; // 500 entspricht FrameWidth
 
 	protected java.awt.Image image;
@@ -51,16 +50,12 @@ public class BaseObjects {
 		return heigth;
 	}
 
-	Image getImage() {
-		return image;
-	}
+	// Image getImage() {
+	// return image;
+	// }
 
-	
-	
-	
-	
-//	Rectangle getBallRect() {
-//		return new Rectangle(x, y,circl , image.getHeight(null));
-//	}
-//	
+	// Rectangle getBallRect() {
+	// return new Rectangle(x, y,circl , image.getHeight(null));
+	// }
+	//
 }

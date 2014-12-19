@@ -15,15 +15,21 @@ public class PointsCalc {
 		switch (specialFunction) {
 		case 0:
 			setPointsCount(20);
+			break;
 		case 1:
 			setPointsCount(40);
+			break;
 		case 2:
-			Ball.setBallSpeed(10); // ballspeedincrease
+			Ball.setBallSpeed(4);
+			break;// ballspeedincrease
 		case 3:
-			Ball.setBallSpeed(5);// ballspeedecreases
+			Ball.setBallSpeed(3);
+			break;// ballspeedecreases
 		case 4:
-			Paddle.setPaddleWidth(100); // paddlegetssmaler
+			Paddle.setPaddleWidth(100);
+			break; // paddlegetssmaler
 		case 5: // additional ball
+			break;
 
 		}
 		setBricksDestroyedCount(1);
