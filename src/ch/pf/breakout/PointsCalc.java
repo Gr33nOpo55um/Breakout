@@ -28,7 +28,9 @@ public class PointsCalc {
 		case 4:
 			Paddle.setPaddleWidth(100);
 			break; // paddlegetssmaler
-		case 5: // additional ball
+
+		case 5:
+			// new Ball
 			break;
 
 		}

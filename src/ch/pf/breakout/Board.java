@@ -67,16 +67,10 @@ public class Board extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		onAction();
-
-	}
-
-	void onAction() {
 
 		paddle.move();
 		ball.move();
 		repaint();
-
 	}
 
 	// This method paints everything
@@ -93,7 +87,7 @@ public class Board extends JPanel implements ActionListener {
 		// draw bricks
 
 		for (Brick brick : bricks) {
-			if (!brick.isDestroyed()) {
+			if (brick.isDestroyed() > 0) {
 				brick.paint(g, this, brick.x, brick.y);
 			}
 		}
@@ -119,7 +113,8 @@ public class Board extends JPanel implements ActionListener {
 
 		public void keyPressed(KeyEvent e) {
 			if (e.getKeyCode() == KeyEvent.VK_SPACE)
-				onAction();
+				actionPerformed(null);
+
 			paddle.keyPressed(e);
 		}
 	}

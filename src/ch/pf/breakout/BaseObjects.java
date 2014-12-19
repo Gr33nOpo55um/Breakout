@@ -1,6 +1,5 @@
 package ch.pf.breakout;
 
-
 public class BaseObjects {
 
 	// protected static int brickWidth = 40;
@@ -11,7 +10,7 @@ public class BaseObjects {
 
 	// Maximum right positions
 	// public static int PADDLE_RIGHT = 340;
-	public static final int BALL_RIGHT = 500; // 500 entspricht FrameWidth
+	// public static final int BALL_RIGHT = 500; // 500 entspricht FrameWidth
 
 	protected java.awt.Image image;
 

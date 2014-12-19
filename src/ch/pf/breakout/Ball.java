@@ -55,7 +55,7 @@ public class Ball extends BaseObjects implements BreakoutSettings {
 			setXDir(ballSpeed);
 		}
 
-		if (this.getRectBall().getMaxX() >= BALL_RIGHT) {
+		if (this.getRectBall().getMaxX() >= FrameWidth) {
 			setXDir(-ballSpeed);
 		}
 
@@ -101,7 +101,7 @@ public class Ball extends BaseObjects implements BreakoutSettings {
 			if (this.getRectBall().intersects(brick.getRectBrick())) {
 				// takes the most left position X of the ball, cast it to int
 				// and write to ballPosLeft
-				if (brick.destroyed == false) {
+				if (brick.destroyed > 0) {
 
 					if (brickRect.contains(pointBottom)) {
 						this.setYDir(-ballSpeed);
@@ -119,10 +119,10 @@ public class Ball extends BaseObjects implements BreakoutSettings {
 					// if Brick is getting destroyed counter of bricks destroyed
 					// increases and destroyed is set to true.
 
-					brick.setDestroyed(true);
-
-					PointsCalc.doSpecialAction(brick.specialFunction);
-
+					brick.setDestroyCounterMinusOne();
+					if (brick.isDestroyed() < 1) {
+						PointsCalc.doSpecialAction(brick.specialFunction);
+					}
 					// Prints Console output for showing the special function of
 					// only for debugging
 
@@ -149,7 +149,7 @@ public class Ball extends BaseObjects implements BreakoutSettings {
 		// Create random number for y Position
 		Random yRand = new Random();
 		int bottomStart = 300;
-		int hightStart = frameHeight - 20;
+		int hightStart = frameHeight - 50;
 		int yStart = yRand.nextInt(hightStart - bottomStart) + bottomStart;
 
 		x = xStart;
