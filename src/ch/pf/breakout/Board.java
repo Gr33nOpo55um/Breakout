@@ -22,6 +22,9 @@ public class Board extends JPanel implements ActionListener {
 	Ball ball;
 	Ball ball2;
 
+	int xBrick = 20;
+	int yBrick = 40;
+	Boolean gameRunning = true;
 	private Timer timer;
 
 	public Board() {
@@ -30,7 +33,7 @@ public class Board extends JPanel implements ActionListener {
 
 		setFocusable(true);
 
-		bricks = new ArrayList<>(30);
+		bricks = new ArrayList<Brick>(30);
 
 		setBackground(Color.white);
 
@@ -51,10 +54,10 @@ public class Board extends JPanel implements ActionListener {
 
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 6; j++) {
-				bricks.add(new Brick(j * 80 + 30, i * 30 + 50));
+				bricks.add(new Brick(j * 80 + 30, i * 30 + 50, xBrick, yBrick));
 			}
-
 		}
+
 		ball = new Ball(paddle, bricks);
 	}
 
@@ -65,9 +68,11 @@ public class Board extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		onAction();
+
 	}
 
 	void onAction() {
+
 		paddle.move();
 		ball.move();
 		repaint();
@@ -78,32 +83,41 @@ public class Board extends JPanel implements ActionListener {
 	public void paint(Graphics g) {
 		super.paint(g);
 
-		// Changes font and paint the Bricks counter
+		// Changes font and paint the Bricks counter and pointCounter
 		int fontsizeGameCounter = 20;
 		g.setColor(Color.LIGHT_GRAY);
 		g.setFont(new Font("Arial", Font.BOLD, fontsizeGameCounter));
-		g.drawString("You destroyed " + Ball.getBricksDestroyedCount() + " Bricks ", 120, 40);
+		g.drawString("You destroyed " + PointsCalc.getBricksDestroyedCount() + " Bricks and made " + PointsCalc.getPointsCount()
+				+ " Points", 20, 40);
 
 		// draw bricks
 		for (Brick brick : bricks) {
-			if (!brick.isDestroyed()) {
-				g.drawImage(brick.getImage(), brick.getX(), brick.getY(), brick.getWidth(), brick.getHeight(), this);
+			for (int i = 0; i < 5; i++) {
+				for (int j = 0; j < 6; j++) {
+					if (!brick.isDestroyed()) {
+						xBrick = j * 80 + 30;
+						yBrick = i * 30 + 50;
+						brick.paint(g, this, brick.x, brick.y);
+					}
+					// g.drawImage(brick.getImage(), brick.getX(), brick.getY(),
+					// brick.getWidth(), brick.getHeight(), this);
+				}
 			}
-		}
 
-		paddle.paint(g, this);
-		ball.paint(g, this);
+			paddle.paint(g, this);
+			ball.paint(g, this);
 
-		if (ball.gameOver == true) {
-			int fontsizeGameOver = 30;
-			g.setColor(Color.red);
-			g.setFont(new Font("Arial", Font.BOLD, fontsizeGameOver));
-			g.drawString("Game over", BreakoutSettings.FrameWidth / 3, BreakoutSettings.frameHeight / 2);
+			if (ball.gameOver == true) {
+				int fontsizeGameOver = 30;
+				g.setColor(Color.red);
+				g.setFont(new Font("Arial", Font.BOLD, fontsizeGameOver));
+				g.drawString("Game over", BreakoutSettings.FrameWidth / 3, BreakoutSettings.frameHeight / 2);
 
+			}
 		}
 	}
 
-	private class TAdapter extends KeyAdapter {
+	class TAdapter extends KeyAdapter {
 
 		public void keyReleased(KeyEvent e) {
 			paddle.keyReleased(e);
@@ -114,7 +128,5 @@ public class Board extends JPanel implements ActionListener {
 				onAction();
 			paddle.keyPressed(e);
 		}
-
 	}
-
 }

@@ -1,28 +1,21 @@
 package ch.pf.breakout;
-import java.awt.Graphics;
-import java.awt.event.KeyEvent;
 
-import javax.swing.ImageIcon;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+import java.awt.geom.Rectangle2D;
 import javax.swing.JPanel;
 
 public class Paddle extends BaseObjects implements BreakoutSettings {
 
-	// writes path of paddle image to paddle
-	String paddle = "/images/paddle.png";
-
-	// move direction variable
 	int dx;
+	static int paddleWidth = 150;
+	int paddleHeigth = 15;
 
 	public Paddle() {
-
-		ImageIcon ii = new ImageIcon(this.getClass().getResource(paddle));
-		image = ii.getImage();
-
-		width = image.getWidth(null);
-		heigth = image.getHeight(null);
-
 		resetState();
-
 	}
 
 	public void move() {
@@ -31,8 +24,8 @@ public class Paddle extends BaseObjects implements BreakoutSettings {
 
 		if (x <= 4)
 			x = 4;
-		if (x >= BaseObjects.PADDLE_RIGHT)
-			x = BaseObjects.PADDLE_RIGHT;
+		if (x >= FrameWidth - paddleWidth)
+			x = FrameWidth - paddleWidth;
 
 	}
 
@@ -69,15 +62,28 @@ public class Paddle extends BaseObjects implements BreakoutSettings {
 	// default location of paddle
 	public void resetState() {
 
-		x = (FrameWidth - width) / 2;
-		y = frameHeight - heigth * 3;
+		x = (FrameWidth - paddleWidth) / 2;
+		y = frameHeight - paddleHeigth * 3;
+	}
+
+	Rectangle getRectPaddle() {
+		return new Rectangle(x, y, paddleWidth, paddleHeigth);
+	}
+
+	public static  void setPaddleWidth(int width) {
+		paddleWidth = width;
 	}
 
 	public void paint(Graphics g, JPanel panel) {
 		// Draw the image of the craft
 		// g.drawImage(image, x, y, panel);
 
-		g.drawImage(image, x, y, panel);
+		Graphics2D g2d = (Graphics2D) g;
+		Rectangle2D.Double rectangle = new Rectangle2D.Double(x, y, paddleWidth, paddleHeigth);
+		g2d.setColor(Color.orange);
+		g2d.fill(rectangle);
+
+		// g.drawImage(image, x, y, panel);
 
 	}
 
