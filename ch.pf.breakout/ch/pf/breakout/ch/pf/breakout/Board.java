@@ -1,4 +1,4 @@
-package ch.pf.breakout;
+package ch.pf.breakout.ch.pf.breakout;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -71,6 +71,8 @@ public class Board extends JPanel implements ActionListener {
 		paddle.move();
 		ball.move();
 		repaint();
+		// Sounds.BREAKOUTSOUND.loop();
+
 	}
 
 	// This method paints everything

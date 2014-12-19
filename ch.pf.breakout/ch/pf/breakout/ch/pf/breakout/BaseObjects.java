@@ -1,4 +1,4 @@
-package ch.pf.breakout;
+package ch.pf.breakout.ch.pf.breakout;
 
 public class BaseObjects {
 

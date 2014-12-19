@@ -1,4 +1,4 @@
-package ch.pf.breakout;
+package ch.pf.breakout.ch.pf.breakout;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
@@ -32,7 +32,7 @@ public class Brick extends BaseObjects {
 
 		int tempRand = (int) (Math.random() * 100) + 1;
 
-		System.out.println(tempRand);
+		//System.out.println(tempRand);
 
 		if (tempRand <= 5) {
 			specialFunction = 1;
