@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 public class Paddle extends BaseObjects implements BreakoutSettings {
 
 	int dx;
-	static int paddleWidth = 150;
+	static int paddleWidth = (int) (FrameWidth *0.3);
 	int paddleHeigth = 15;
 
 	public Paddle() {

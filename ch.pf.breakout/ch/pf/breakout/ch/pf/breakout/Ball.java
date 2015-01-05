@@ -6,10 +6,10 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Ellipse2D.Double;
+import java.awt.geom.Rectangle2D;
 import java.util.List;
-import java.util.Random;
 
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class Ball extends BaseObjects implements BreakoutSettings {
@@ -21,7 +21,7 @@ public class Ball extends BaseObjects implements BreakoutSettings {
 	int ballDimension = 13;
 
 	// loading image
-	protected String ball = "/images/ball.png";
+	// protected String ball = "/images/ball.png";
 
 	// initalise bricks and paddle
 	private Paddle paddle;
@@ -34,11 +34,6 @@ public class Ball extends BaseObjects implements BreakoutSettings {
 
 		xdir = ballSpeed;
 		ydir = -ballSpeed;
-		ImageIcon ii = new ImageIcon(this.getClass().getResource(ball));
-		image = ii.getImage();
-
-		width = image.getWidth(null);
-		heigth = image.getHeight(null);
 
 		resetState();
 
@@ -50,6 +45,7 @@ public class Ball extends BaseObjects implements BreakoutSettings {
 		x += xdir;
 		y += ydir;
 
+		// wall collision detections
 		if (this.getRectBall().getMinX() <= 0) {
 
 			setXDir(ballSpeed);
@@ -92,7 +88,7 @@ public class Ball extends BaseObjects implements BreakoutSettings {
 
 		}
 
-		// for all 30 bricks
+		// collision detection for all 30 bricks
 		for (Brick brick : bricks) {
 
 			// if ball collidate with brick
@@ -123,10 +119,10 @@ public class Ball extends BaseObjects implements BreakoutSettings {
 					if (brick.isDestroyed() < 1) {
 						PointsCalc.doSpecialAction(brick.specialFunction);
 					}
-					// Prints Console output for showing the special function of
-					// only for debugging
 
-					// System.out.println(pointsCalc);
+					// Prints Console output for showing the special function of
+					// only used for debugging
+					// System.out.println(pointRight);
 
 				}
 
@@ -137,20 +133,12 @@ public class Ball extends BaseObjects implements BreakoutSettings {
 
 	public void resetState() {
 
-		// will replace the random generator from further below
-		// int tempRandX = (int) (Math.random() * 100) + 1;
-		// int tempRandY = (int) (Math.random() * 100) + 1;
+		// create two random numbers
+		// x could be from 1 to the framewidth minus 10
+		// y could be from 300 until the height minus 50
+		int xStart = (int) (Math.random() * (FrameWidth - 10)) + 10;
+		int yStart = (int) (Math.random() * (frameHeight - 100)) + 150;
 		// Create random number for x Position
-		Random xRand = new Random();
-		int leftStart = 10;
-		int rightStart = FrameWidth - 10;
-		int xStart = xRand.nextInt(rightStart - leftStart) + leftStart;
-
-		// Create random number for y Position
-		Random yRand = new Random();
-		int bottomStart = 300;
-		int hightStart = frameHeight - 50;
-		int yStart = yRand.nextInt(hightStart - bottomStart) + bottomStart;
 
 		x = xStart;
 		y = yStart;
@@ -174,8 +162,14 @@ public class Ball extends BaseObjects implements BreakoutSettings {
 		xdir = x;
 	}
 
-	Rectangle getRectBall() {
-		return new Rectangle(x, y, ballDimension, ballDimension);
+	Double getRectBall() {
+		// return new Rectangle(x, y, ballDimension, ballDimension);
+		return new Ellipse2D.Double(x, y, ballDimension, ballDimension);
+	}
+
+	Rectangle2D getBounds2D() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public static void setBallSpeed(int speed) {
@@ -189,8 +183,6 @@ public class Ball extends BaseObjects implements BreakoutSettings {
 		Ellipse2D.Double circle = new Ellipse2D.Double(x, y, ballDimension, ballDimension);
 		g2d.setColor(Color.cyan);
 		g2d.fill(circle);
-
-		// g.drawImage(image, x, y, panel);
 	}
 
 }

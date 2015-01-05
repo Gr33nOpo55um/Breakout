@@ -17,7 +17,7 @@ public class Board extends JPanel implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
-	List<Brick> bricks;
+	static List<Brick> bricks;
 	Paddle paddle;
 	Ball ball;
 	Ball ball2;
@@ -42,7 +42,7 @@ public class Board extends JPanel implements ActionListener {
 
 		gameInit();
 		//
-		timer = new Timer(10, this);
+		timer = new Timer(12, this);
 		timer.start();
 
 	}
@@ -54,11 +54,18 @@ public class Board extends JPanel implements ActionListener {
 
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 6; j++) {
-				bricks.add(new Brick(j * 80 + 30, i * 30 + 50, xBrick, yBrick));
+				bricks.add(new Brick(j * 80 + 15, i * 30 + 50, xBrick, yBrick));
 			}
 		}
 
 		ball = new Ball(paddle, bricks);
+	}
+
+	public static void gameResetWin() {
+
+		for (Brick brick : bricks) {
+			brick.destroyed = 2;
+		}
 	}
 
 	public void bonusAchivement() {
@@ -72,6 +79,7 @@ public class Board extends JPanel implements ActionListener {
 		ball.move();
 		repaint();
 		// Sounds.BREAKOUTSOUND.loop();
+		Sounds.play(Sounds.backgroundMusic);
 
 	}
 

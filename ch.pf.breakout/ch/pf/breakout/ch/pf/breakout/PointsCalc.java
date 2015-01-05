@@ -1,6 +1,6 @@
 package ch.pf.breakout.ch.pf.breakout;
 
-public class PointsCalc {
+public class PointsCalc implements BreakoutSettings{
 
 	private static int bricksDestroyCount = 0;
 	private static int pointsCalc = 0;
@@ -26,13 +26,17 @@ public class PointsCalc {
 			Ball.setBallSpeed(3);
 			break;// ballspeedecreases
 		case 4:
-			Paddle.setPaddleWidth(100);
+			Paddle.setPaddleWidth((int) (FrameWidth *0.2));
 			break; // paddlegetssmaler
 
 		case 5:
 			// new Ball
 			break;
+		case 6:
+			Paddle.setPaddleWidth((int) (FrameWidth *0.4));
+			break; // paddlegetssmaler
 
+			
 		}
 		setBricksDestroyedCount(1);
 
@@ -47,8 +51,9 @@ public class PointsCalc {
 
 		bricksDestroyCount += increaseBricksDestroyed;
 
+		// this will be a bug if you play more than two rounds
 		if (bricksDestroyCount == 30) {
-			// Abbruchbedinung muss hier noch rein
+			Board.gameResetWin();
 		}
 	}
 

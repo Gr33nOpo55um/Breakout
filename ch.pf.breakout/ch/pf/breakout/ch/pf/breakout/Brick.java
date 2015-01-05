@@ -9,7 +9,10 @@ import java.awt.geom.Rectangle2D;
 
 import javax.swing.JPanel;
 
-public class Brick extends BaseObjects {
+public class Brick extends BaseObjects implements BreakoutSettings {
+
+	int height = 20;
+	int width2 = FrameWidth / 7 / 7 * 6;
 
 	String brickie = "/images/brick.png";
 
@@ -32,14 +35,12 @@ public class Brick extends BaseObjects {
 
 		int tempRand = (int) (Math.random() * 100) + 1;
 
-		//System.out.println(tempRand);
+		// System.out.println(tempRand);
 
 		if (tempRand <= 5) {
 			specialFunction = 1;
 			brickColor = Color.orange;
-		}
-
-		else if (tempRand > 5 && tempRand <= 10) {
+		} else if (tempRand > 5 && tempRand <= 10) {
 			specialFunction = 2;
 			brickColor = Color.magenta;
 		} else if (tempRand > 10 && tempRand <= 15) {
@@ -51,6 +52,9 @@ public class Brick extends BaseObjects {
 		} else if (tempRand > 20 && tempRand <= 25) {
 			specialFunction = 5;
 			brickColor = Color.green;
+		} else if (tempRand > 25 && tempRand <= 30) {
+			specialFunction = 6;
+			brickColor = Color.yellow;
 		} else {
 			specialFunction = 0;
 			brickColor = Color.magenta;
@@ -67,14 +71,14 @@ public class Brick extends BaseObjects {
 	}
 
 	Rectangle getRectBrick() {
-		return new Rectangle(x, y, width, heigth);
+		return new Rectangle(x, y, width2, height);
 	}
 
 	public void paint(Graphics g, JPanel panel, int x, int y) {
 
 		Graphics2D g2d = (Graphics2D) g;
 
-		Rectangle2D.Double rectangle = new Rectangle2D.Double(x, y, 40, 20);
+		Rectangle2D.Double rectangle = new Rectangle2D.Double(x, y, width2, height);
 		if (isDestroyed() == 1) {
 			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 3 * 0.1f));
 		}
@@ -84,5 +88,4 @@ public class Brick extends BaseObjects {
 		g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 10 * 0.1f));
 
 	}
-
 }
