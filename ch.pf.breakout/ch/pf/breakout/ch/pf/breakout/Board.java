@@ -79,7 +79,7 @@ public class Board extends JPanel implements ActionListener {
 		ball.move();
 		repaint();
 		// Sounds.BREAKOUTSOUND.loop();
-		Sounds.play(Sounds.backgroundMusic);
+		Sounds.loop(Sounds.backgroundMusic);
 
 	}
 

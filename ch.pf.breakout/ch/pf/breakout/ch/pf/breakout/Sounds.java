@@ -1,16 +1,12 @@
 package ch.pf.breakout.ch.pf.breakout;
 
-import java.applet.Applet;
-import java.applet.AudioClip;
-
-import javax.sound.sampled.Clip;
-
+//import javax.sound.sampled.Clip;
 import javax.sound.sampled.*;
 import java.io.IOException;
 import java.net.URL;
 
 public class Sounds {
-	public static Clip backgroundMusic = getSound("/sounds/background.wav");
+	public static Clip backgroundMusic = getSound("/sounds/Strong-man-electro-track.wav");
 
 	private static Clip getSound(String path) {
 
@@ -35,7 +31,6 @@ public class Sounds {
 		if (clip.isActive()) {
 			clip.stop();
 		}
-
 		clip.setFramePosition(0);
 		clip.start();
 	}
@@ -48,23 +43,4 @@ public class Sounds {
 		clip.stop();
 	}
 
-	/*
-	 * public static final AudioClip BREAKOUTSOUND =
-	 * Applet.newAudioClip(Sounds.class
-	 * .getResource("/sounds/background_converted.wav"));
-	 * 
-	 * private static String _music;
-	 * 
-	 * public static void loopMusic(String music) { _music = music; switch
-	 * (music) { case "CTYPE": { Sounds.BREAKOUTSOUND.play(); } break;
-	 * 
-	 * } }
-	 * 
-	 * public static void stopMusic() { switch (_music) { case "ATYPE": {
-	 * Sounds.BREAKOUTSOUND.stop(); } break;
-	 * 
-	 * }
-	 * 
-	 * }
-	 */
 }
