@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 public class Paddle extends BaseObjects implements BreakoutSettings {
 
-	int paddleDirectionX;
+	static int paddleDirectionX;
 	static int paddleWidth = FrameWidth / 3;
 	int paddleHeigth = 15;
 
@@ -42,26 +42,12 @@ public class Paddle extends BaseObjects implements BreakoutSettings {
 
 	}
 
-	public void setPaddlePosition(int dx) {
+	public static void setPaddlePosition(int dx) {
 		paddleDirectionX = dx;
 
 	}
 
-	public void keyPressed(KeyEvent e) {
-		int key = e.getKeyCode();
 
-		if (key == KeyEvent.VK_LEFT) {
-			setPaddlePosition(-4);
-		}
-
-		if (key == KeyEvent.VK_RIGHT) {
-			setPaddlePosition(-4);
-		}
-		if (key == KeyEvent.VK_RIGHT) {
-			setPaddlePosition(4);
-		}
-
-	}
 
 	// default location of paddle
 	public void resetState() {

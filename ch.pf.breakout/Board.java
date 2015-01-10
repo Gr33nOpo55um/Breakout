@@ -24,6 +24,7 @@ public class Board extends JPanel implements ActionListener {
 	int xBrick = 20;
 	int yBrick = 40;
 	Boolean gameRunning = true;
+	Boolean gamePaused = false;
 	private Timer timer;
 
 	public Board() {
@@ -61,6 +62,7 @@ public class Board extends JPanel implements ActionListener {
 		ball = new Ball(paddle, bricks);
 	}
 
+	// Method reset destroyed count of Bricks
 	public static void gameResetWin() {
 
 		for (Brick brick : bricks) {
@@ -68,9 +70,16 @@ public class Board extends JPanel implements ActionListener {
 		}
 	}
 
+	// Method for Pause game
 	public void gamePause() {
+		if (gamePaused == false) {
+			timer.stop();
+			gamePaused = true;
+		} else {
+			timer.restart();
+			gamePaused = false;
 
-		timer.stop();
+		}
 
 	}
 
@@ -137,6 +146,14 @@ public class Board extends JPanel implements ActionListener {
 
 		}
 
+		// if (gamePaused == true) {
+		// int fontsizePause = 30;
+		// g.setColor(Color.red);
+		// g.setFont(new Font("Arial", Font.BOLD, fontsizePause));
+		// g.drawString("Pause", BreakoutSettings.FrameWidth / 3,
+		// BreakoutSettings.FrameHeight / 2);
+		// }
+
 	}
 
 	class TAdapter extends KeyAdapter {
@@ -146,10 +163,31 @@ public class Board extends JPanel implements ActionListener {
 		}
 
 		public void keyPressed(KeyEvent e) {
-			if (e.getKeyCode() == KeyEvent.VK_SPACE)
-				actionPerformed(null);
+			int key = e.getKeyCode();
 
-			paddle.keyPressed(e);
+			// Move Paddle
+			if (key == KeyEvent.VK_LEFT) {
+				Paddle.setPaddlePosition(-4);
+			}
+			if (key == KeyEvent.VK_RIGHT) {
+				Paddle.setPaddlePosition(-4);
+			}
+			if (key == KeyEvent.VK_RIGHT) {
+				Paddle.setPaddlePosition(4);
+			}
+
+			// Make Pause
+			if (key == KeyEvent.getExtendedKeyCodeForChar(80)) {
+				gamePause();
+			}
+
 		}
+
+		/*
+		 * public void keyPressed1(KeyEvent e) { if (e.getKeyCode() ==
+		 * KeyEvent.VK_SPACE) actionPerformed(null);
+		 * 
+		 * keyPressed(e); }
+		 */
 	}
 }
