@@ -19,7 +19,7 @@ public class Board extends JPanel implements ActionListener {
 	static List<Brick> bricks;
 	Paddle paddle;
 	Ball ball;
-	Ball ball2;
+	
 
 	int xBrick = 20;
 	int yBrick = 40;
@@ -83,9 +83,7 @@ public class Board extends JPanel implements ActionListener {
 
 	}
 
-	public void bonusAchivement() {
-		ball2 = new Ball(paddle, bricks);
-	}
+
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
