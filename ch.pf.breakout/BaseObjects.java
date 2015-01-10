@@ -1,22 +1,28 @@
-
-
 public class BaseObjects {
 
-
-	//public static int ballSpeed = 3;
-
+	// public static int ballSpeed = 3;
 
 	protected int x = 0;
 	protected int y = 0;
 
 	protected int width;
 	protected int heigth;
-	public boolean gameOver = false;
+	boolean gameOver = false;
+	static boolean donkeyModeEnabled = false;
+
+	public static void setDonkeyMode(boolean newValue) {
+
+		donkeyModeEnabled = newValue;
+	}
+	
+	public static boolean getDonkeyModeVal() {
+
+		return donkeyModeEnabled ;
+	}	
 
 	public void setX(int x) {
 
 		this.x = x;
-
 	}
 
 	public void setY(int y) {
@@ -40,6 +46,5 @@ public class BaseObjects {
 	public int getHeight() {
 		return heigth;
 	}
-
 
 }

@@ -1,5 +1,3 @@
-
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -69,9 +67,13 @@ public class Ball extends BaseObjects implements BreakoutSettings {
 
 		if (this.getRectBall().getMaxY() >= FrameHeight) {
 
-			gameOver = true;
-			Sounds.play(Sounds.collisionSound);
+			if (getDonkeyModeVal() == true) {
+				setYDir(-ballSpeed);
 
+			} else {
+				gameOver = true;
+				Sounds.play(Sounds.collisionSound);
+			}
 		}
 
 		if (this.getRectBall().getMaxY() > 0) {

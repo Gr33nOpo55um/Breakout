@@ -1,5 +1,4 @@
 
-
 //import javax.sound.sampled.Clip;
 import javax.sound.sampled.*;
 import java.io.IOException;
@@ -9,8 +8,8 @@ public class Sounds {
 	public static Clip backgroundMusic = getSound("/sounds/dragonball_z.wav");
 	public static Clip collisionSound = getSound("/sounds/gym_exercise_ball_punch.wav");
 	public static Clip explossionSound = getSound("/sounds/explosion.wav");
+	public static Clip donkeySound = getSound("/sounds/donkey.wav");
 
-	
 	private static Clip getSound(String path) {
 
 		URL url = Sounds.class.getResource(path);

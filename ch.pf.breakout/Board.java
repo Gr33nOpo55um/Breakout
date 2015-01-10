@@ -94,26 +94,15 @@ public class Board extends JPanel implements ActionListener {
 		ball.move();
 		repaint();
 		Sounds.loop(Sounds.backgroundMusic);
+		if (BaseObjects.getDonkeyModeVal() == true) {
+			Sounds.loop(Sounds.donkeySound);
+		}
 
 	}
 
 	// This method paints everything
 	public void paint(Graphics g) {
 		super.paint(g);
-
-		/*
-		 * MenuBar menuBar; Menu menu, submenu; MenuItem mExit, mReset;
-		 * 
-		 * menuBar = new MenuBar(); //Create the menu menu = new Menu("Menu");
-		 * 
-		 * //Create submenu submenu=new Menu("Sub Menu");
-		 * 
-		 * mExit = new MenuItem("Exit"); mReset = new MenuItem("Reset");
-		 * 
-		 * menu.add(mReset); menu.add(mExit);
-		 * 
-		 * setMenuBar(menuBar);
-		 */
 
 		// Changes font and paint the Bricks counter and pointCounter
 		// int fontsizeGameCounter = 20;
@@ -181,13 +170,21 @@ public class Board extends JPanel implements ActionListener {
 				gamePause();
 			}
 
+			// enable DonkeyMode
+			if (key == KeyEvent.getExtendedKeyCodeForChar(68)) {
+				if (BaseObjects.getDonkeyModeVal() == false) {
+
+					BaseObjects.setDonkeyMode(true);
+
+				} else {
+
+					BaseObjects.setDonkeyMode(false);
+
+				}
+
+			}
+
 		}
 
-		/*
-		 * public void keyPressed1(KeyEvent e) { if (e.getKeyCode() ==
-		 * KeyEvent.VK_SPACE) actionPerformed(null);
-		 * 
-		 * keyPressed(e); }
-		 */
 	}
 }
