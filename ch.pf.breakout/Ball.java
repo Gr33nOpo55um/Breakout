@@ -5,7 +5,6 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Ellipse2D.Double;
-import java.awt.geom.Rectangle2D;
 import java.util.List;
 
 import javax.swing.JPanel;
@@ -26,6 +25,10 @@ public class Ball extends BaseObjects implements BreakoutSettings {
 	private Paddle paddle;
 	private List<Brick> bricks;
 
+	/**
+	 * @param paddle
+	 * @param bricks
+	 */
 	public Ball(Paddle paddle, List<Brick> bricks) {
 
 		this.paddle = paddle;
@@ -38,6 +41,9 @@ public class Ball extends BaseObjects implements BreakoutSettings {
 
 	}
 
+	/**
+	 * This method contain the ball movement including the collision detection
+	 */
 	public void move()
 
 	{
@@ -45,27 +51,27 @@ public class Ball extends BaseObjects implements BreakoutSettings {
 		y += ydir;
 
 		// wall collision detections
-		if (this.getRectBall().getMinX() <= 0) {
+		if (this.getRoundBall().getMinX() <= 0) {
 
 			setXDir(ballSpeed);
 			Sounds.play(Sounds.collisionSound);
 
 		}
 
-		if (this.getRectBall().getMaxX() >= FrameWidth) {
+		if (this.getRoundBall().getMaxX() >= FrameWidth) {
 			setXDir(-ballSpeed);
 			Sounds.play(Sounds.collisionSound);
 
 		}
 
-		if (this.getRectBall().getMaxY() - heigth <= 0) {
+		if (this.getRoundBall().getMaxY() - heigth <= 0) {
 
 			setYDir(ballSpeed);
 			Sounds.play(Sounds.collisionSound);
 
 		}
 
-		if (this.getRectBall().getMaxY() >= FrameHeight) {
+		if (this.getRoundBall().getMaxY() >= FrameHeight - 2 * ballDimension) {
 
 			if (getDonkeyModeVal() == true) {
 				setYDir(-ballSpeed);
@@ -76,13 +82,13 @@ public class Ball extends BaseObjects implements BreakoutSettings {
 			}
 		}
 
-		if (this.getRectBall().getMaxY() > 0) {
+		if (this.getRoundBall().getMaxY() > 0) {
 		}
 
-		int ballPosLeft = (int) this.getRectBall().getMinX();
-		int ballHeight = (int) this.getRectBall().getHeight();
-		int ballWidth = (int) this.getRectBall().getWidth();
-		int ballPosTop = (int) this.getRectBall().getMinY();
+		int ballPosLeft = (int) this.getRoundBall().getMinX();
+		int ballHeight = (int) this.getRoundBall().getHeight();
+		int ballWidth = (int) this.getRoundBall().getWidth();
+		int ballPosTop = (int) this.getRoundBall().getMinY();
 
 		Point pointRight = new Point(ballPosLeft + ballWidth + 1, ballPosTop);
 		Point pointLeft = new Point(ballPosLeft - 1, ballPosTop);
@@ -90,7 +96,7 @@ public class Ball extends BaseObjects implements BreakoutSettings {
 		Point pointBottom = new Point(ballPosLeft, ballPosTop + ballHeight + 1);
 
 		// if paddle meets the ball
-		if (this.getRectBall().intersects(paddle.getRectPaddle())) {
+		if (this.getRoundBall().intersects(paddle.getRectPaddle())) {
 
 			if (paddle.getRectPaddle().contains(pointBottom)) {
 
@@ -107,7 +113,7 @@ public class Ball extends BaseObjects implements BreakoutSettings {
 			// if ball collidate with brick
 			Rectangle brickRect = brick.getRectBrick();
 
-			if (this.getRectBall().intersects(brick.getRectBrick())) {
+			if (this.getRoundBall().intersects(brick.getRectBrick())) {
 				// takes the most left position X of the ball, cast it to int
 				// and write to ballPosLeft
 				if (brick.destroyed > 0) {
@@ -152,6 +158,9 @@ public class Ball extends BaseObjects implements BreakoutSettings {
 
 	}
 
+	/**
+	 * Coordinates of Ball by gamestart. Random generated
+	 */
 	public void resetState() {
 
 		// create two random numbers
@@ -163,38 +172,64 @@ public class Ball extends BaseObjects implements BreakoutSettings {
 		y = yStart;
 	}
 
+	/**
+	 * @return direction x of ball
+	 */
 	public int getXDir() {
 		return xdir;
 
 	}
 
+	/**
+	 * @return y direction of ball
+	 */
 	public int getYDir() {
 		return ydir;
 	}
 
+	/**
+	 * @param y
+	 *            sets y direction of ball
+	 */
 	public void setYDir(int y) {
 		ydir = y;
 
 	}
 
+	/**
+	 * @param x
+	 *            sets x direction of ball
+	 */
 	public void setXDir(int x) {
 		xdir = x;
 	}
 
-	Double getRectBall() {
+	/**
+	 * @return ellipse coordinates of ball
+	 */
+	Double getRoundBall() {
 		// return new Rectangle(x, y, ballDimension, ballDimension);
 		return new Ellipse2D.Double(x, y, ballDimension, ballDimension);
 	}
 
-	Rectangle2D getBounds2D() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	/*
+	 * Rectangle2D getBounds2D() { // TODO Auto-generated method stub return
+	 * null; }
+	 */
 
+	/**
+	 * @param speed
+	 *            increases speed of ball
+	 */
 	public static void setBallSpeed(int speed) {
 		ballSpeed = speed;
 	}
 
+	/**
+	 * @param g
+	 *            Graphic object
+	 * @param panel
+	 */
 	public void paint(Graphics g, JPanel panel) {
 
 		Graphics2D g2d = (Graphics2D) g;

@@ -7,16 +7,45 @@ import java.awt.geom.Rectangle2D;
 
 import javax.swing.JPanel;
 
+/**
+ * @author Silas
+ *
+ */
+/**
+ * @author Silas
+ *
+ */
+/**
+ * @author Silas
+ *
+ */
+/**
+ * @author Silas
+ *
+ */
+/**
+ * @author Silas
+ *
+ */
+/**
+ * @author Silas
+ */
 public class Paddle extends BaseObjects implements BreakoutSettings {
 
 	static int paddleDirectionX;
 	static int paddleWidth = FrameWidth / 3;
 	int paddleHeigth = 15;
 
+	/**
+	 * 
+	 */
 	public Paddle() {
 		resetState();
 	}
 
+	/**
+	 * Control Paddle movement
+	 */
 	public void move() {
 
 		x += paddleDirectionX;
@@ -28,6 +57,10 @@ public class Paddle extends BaseObjects implements BreakoutSettings {
 
 	}
 
+	/**
+	 * @param e
+	 *            set paddle directions by movents
+	 */
 	public void keyReleased(KeyEvent e) {
 
 		int key = e.getKeyCode();
@@ -47,9 +80,9 @@ public class Paddle extends BaseObjects implements BreakoutSettings {
 
 	}
 
-
-
-	// default location of paddle
+	/**
+	 * default location of paddle
+	 */
 	public void resetState() {
 
 		x = (FrameWidth - paddleWidth) / 2;
@@ -60,21 +93,24 @@ public class Paddle extends BaseObjects implements BreakoutSettings {
 		return new Rectangle(x, y, paddleWidth, paddleHeigth);
 	}
 
+	/**
+	 * @param width
+	 *            set paddle witdh
+	 */
 	public static void setPaddleWidth(int width) {
 		paddleWidth = width;
 	}
 
+	/**
+	 * @param g
+	 * @param panel
+	 */
 	public void paint(Graphics g, JPanel panel) {
-		// Draw the image of the craft
-		// g.drawImage(image, x, y, panel);
-
 		Graphics2D g2d = (Graphics2D) g;
+		
 		Rectangle2D.Double rectangle = new Rectangle2D.Double(x, y, paddleWidth, paddleHeigth);
+		
 		g2d.setColor(Color.orange);
 		g2d.fill(rectangle);
-
-		// g.drawImage(image, x, y, panel);
-
 	}
-
 }

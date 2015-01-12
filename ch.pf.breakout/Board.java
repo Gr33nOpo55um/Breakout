@@ -12,6 +12,17 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+/**
+ * @author Silas
+ */
+
+/**
+ * @author Silas
+ *
+ */
+/**
+ * @author Silas
+ */
 public class Board extends JPanel implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
@@ -19,7 +30,6 @@ public class Board extends JPanel implements ActionListener {
 	static List<Brick> bricks;
 	Paddle paddle;
 	Ball ball;
-	
 
 	int xBrick = 20;
 	int yBrick = 40;
@@ -47,7 +57,9 @@ public class Board extends JPanel implements ActionListener {
 
 	}
 
-	// method initialize game objetcts as bricks, ball, etc.
+	/**
+	 * method initialize game objetcts as bricks, ball, etc.
+	 */
 	public void gameInit() {
 
 		paddle = new Paddle();
@@ -62,7 +74,9 @@ public class Board extends JPanel implements ActionListener {
 		ball = new Ball(paddle, bricks);
 	}
 
-	// Method reset destroyed count of Bricks
+	/**
+	 * Method reset destroyed count of Bricks
+	 */
 	public static void gameResetWin() {
 
 		for (Brick brick : bricks) {
@@ -70,7 +84,9 @@ public class Board extends JPanel implements ActionListener {
 		}
 	}
 
-	// Method for Pause game
+	/**
+	 * Method for Pause game
+	 */
 	public void gamePause() {
 		if (gamePaused == false) {
 			timer.stop();
@@ -83,8 +99,12 @@ public class Board extends JPanel implements ActionListener {
 
 	}
 
-
-
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -98,19 +118,20 @@ public class Board extends JPanel implements ActionListener {
 
 	}
 
-	// This method paints everything
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see javax.swing.JComponent#paint(java.awt.Graphics) This method paints
+	 * everything
+	 */
 	public void paint(Graphics g) {
 		super.paint(g);
 
 		// Changes font and paint the Bricks counter and pointCounter
-		// int fontsizeGameCounter = 20;
 		g.setColor(Color.LIGHT_GRAY);
 		g.drawString("Bricks destroyed: " + PointsCalc.getBricksDestroyedCount(), 4, 12);
 		g.drawString("Points :" + PointsCalc.getPointsCount(), 4, 24);
-		// g.setFont(new Font("Arial", Font.BOLD, fontsizeGameCounter));
-		// g.drawString("You destroyed " + PointsCalc.getBricksDestroyedCount()
-		// + " Bricks and made " + PointsCalc.getPointsCount() + " Points", 20,
-		// 40);
+
 		g.drawString("Level: " + PointsCalc.getGameLevel(), BreakoutSettings.FrameWidth - 70, 12);
 		// draw bricks
 		for (Brick brick : bricks) {
@@ -132,14 +153,6 @@ public class Board extends JPanel implements ActionListener {
 			Sounds.play(Sounds.explossionSound);
 
 		}
-
-		// if (gamePaused == true) {
-		// int fontsizePause = 30;
-		// g.setColor(Color.red);
-		// g.setFont(new Font("Arial", Font.BOLD, fontsizePause));
-		// g.drawString("Pause", BreakoutSettings.FrameWidth / 3,
-		// BreakoutSettings.FrameHeight / 2);
-		// }
 
 	}
 

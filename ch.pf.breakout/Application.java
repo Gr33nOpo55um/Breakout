@@ -1,11 +1,9 @@
-
 import javax.swing.JFrame;
 
 public class Application implements BreakoutSettings {
 
 	public Application() {
 
-		// TODO Auto-generated method stub
 		JFrame frame = new JFrame();
 		frame.setSize(FrameWidth, FrameHeight);
 		frame.add(new Board());
@@ -20,6 +18,10 @@ public class Application implements BreakoutSettings {
 
 	}
 
+	/**
+	 * @param args
+	 *            start Application Method
+	 */
 	public static void main(String[] args) {
 
 		new Application();

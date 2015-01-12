@@ -7,6 +7,10 @@ import java.awt.geom.Rectangle2D;
 
 import javax.swing.JPanel;
 
+/**
+ * @author Silas
+ *
+ */
 public class Brick extends BaseObjects implements BreakoutSettings {
 
 	int height = 20;
