@@ -9,6 +9,10 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
+/**
+ * @author Silas Stegmüller
+ *
+ */
 public class Ball extends BaseObjects implements BreakoutSettings {
 
 	// directions of the ball

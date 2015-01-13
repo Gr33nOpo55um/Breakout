@@ -1,3 +1,7 @@
+/**
+ * @author Silas Stegmüller
+ *
+ */
 public class BaseObjects {
 
 	// public static int ballSpeed = 3;

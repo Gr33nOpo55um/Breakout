@@ -1,5 +1,9 @@
 import javax.swing.JFrame;
 
+/**
+ * @author Silas Stegmüller
+ *
+ */
 public class Application implements BreakoutSettings {
 
 	public Application() {

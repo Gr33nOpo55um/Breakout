@@ -1,3 +1,6 @@
+/**
+ * @author Silas Stegmüller
+ */
 public interface BreakoutSettings {
 
 	/**
@@ -6,7 +9,6 @@ public interface BreakoutSettings {
 	public static final int FrameHeight = 600;
 	public static final int FrameWidth = 500;
 
-	
 	public static final String GameName = "Breakout by Gr33n Opo55um";
 
 }

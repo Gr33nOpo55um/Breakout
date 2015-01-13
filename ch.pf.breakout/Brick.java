@@ -8,7 +8,7 @@ import java.awt.geom.Rectangle2D;
 import javax.swing.JPanel;
 
 /**
- * @author Silas
+ * @author Silas Stegmüller
  *
  */
 public class Brick extends BaseObjects implements BreakoutSettings {

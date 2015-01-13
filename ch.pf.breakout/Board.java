@@ -12,16 +12,10 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-/**
- * @author Silas
- */
 
 /**
- * @author Silas
+ * @author Silas Stegmüller
  *
- */
-/**
- * @author Silas
  */
 public class Board extends JPanel implements ActionListener {
 
@@ -190,6 +184,7 @@ public class Board extends JPanel implements ActionListener {
 				} else {
 
 					BaseObjects.setDonkeyMode(false);
+					Sounds.stop(Sounds.donkeySound);
 
 				}
 
