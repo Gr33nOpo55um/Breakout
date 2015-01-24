@@ -1,80 +1,76 @@
 /**
- * @author Silas Stegmüller
- *
+ * @author Silas Stegmï¿½ller
  */
 public class BaseObjects {
 
-	// public static int ballSpeed = 3;
+    // public static int ballSpeed = 3;
 
-	protected int x = 0;
-	protected int y = 0;
+    static boolean donkeyModeEnabled = false;
+    protected int x = 0;
+    protected int y = 0;
+    protected int width;
+    protected int heigth;
+    boolean gameOver = false;
 
-	protected int width;
-	protected int heigth;
-	boolean gameOver = false;
-	static boolean donkeyModeEnabled = false;
+    /**
+     * @param newValue
+     */
+    public static void setDonkeyMode(boolean newValue) {
 
-	/**
-	 * @param newValue
-	 */
-	public static void setDonkeyMode(boolean newValue) {
+        donkeyModeEnabled = newValue;
+    }
 
-		donkeyModeEnabled = newValue;
-	}
+    /**
+     * @return if donkey mode is enabled
+     */
+    public static boolean getDonkeyModeVal() {
 
-	/**
-	 * @return if donkey mode is enabled
-	 */
-	public static boolean getDonkeyModeVal() {
+        return donkeyModeEnabled;
+    }
 
-		return donkeyModeEnabled;
-	}
+    /**
+     * @return X
+     */
+    public int getX() {
+        return x;
+    }
 
-	/**
-	 * @param x
-	 *            set value
-	 */
-	public void setX(int x) {
+    /**
+     * @param x set value
+     */
+    public void setX(int x) {
 
-		this.x = x;
-	}
+        this.x = x;
+    }
 
-	/**
-	 * @param y
-	 *            set value
-	 */
-	public void setY(int y) {
+    /**
+     * @return Y
+     */
+    public int getY() {
+        return y;
+    }
 
-		this.y = y;
+    /**
+     * @param y set value
+     */
+    public void setY(int y) {
 
-	}
+        this.y = y;
 
-	/**
-	 * @return X
-	 */
-	public int getX() {
-		return x;
-	}
+    }
 
-	/**
-	 * @return Y
-	 */
-	public int getY() {
-		return y;
-	}
+    /**
+     * @return width
+     */
+    public int getWidth() {
+        return width;
+    }
 
-	/**
-	 * @return width
-	 */
-	public int getWidth() {
-		return width;
-	}
-
-	/**
-	 * @return height
-	 */
-	public int getHeight() {
-		return heigth;
-	}
+    /**
+     * @return height
+     */
+    public int getHeight() {
+        return heigth;
+    }
 
 }

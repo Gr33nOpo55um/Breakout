@@ -1,116 +1,111 @@
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Rectangle2D;
 
-import javax.swing.JPanel;
+/**
+ * @author Silas
+ *
+ */
+/**
+ * @author Silas
+ *
+ */
+/**
+ * @author Silas
+ *
+ */
+/**
+ * @author Silas
+ *
+ */
+/**
+ * @author Silas
+ *
+ */
 
-/**
- * @author Silas
- *
- */
-/**
- * @author Silas
- *
- */
-/**
- * @author Silas
- *
- */
-/**
- * @author Silas
- *
- */
-/**
- * @author Silas
- *
- */
 /**
  * @author Silas
  */
 public class Paddle extends BaseObjects implements BreakoutSettings {
 
-	static int paddleDirectionX;
-	static int paddleWidth = FrameWidth / 3;
-	int paddleHeigth = 15;
+    static int paddleDirectionX;
+    static int paddleWidth = FrameWidth / 3;
+    int paddleHeigth = 15;
 
-	/**
-	 * 
-	 */
-	public Paddle() {
-		resetState();
-	}
+    /**
+     *
+     */
+    public Paddle() {
+        resetState();
+    }
 
-	/**
-	 * Control Paddle movement
-	 */
-	public void move() {
+    public static void setPaddlePosition(int dx) {
+        paddleDirectionX = dx;
 
-		x += paddleDirectionX;
+    }
 
-		if (x <= 4)
-			x = 4;
-		if (x >= FrameWidth - paddleWidth)
-			x = FrameWidth - paddleWidth;
+    /**
+     * @param width set paddle witdh
+     */
+    public static void setPaddleWidth(int width) {
+        paddleWidth = width;
+    }
 
-	}
+    /**
+     * Control Paddle movement
+     */
+    public void move() {
 
-	/**
-	 * @param e
-	 *            set paddle directions by movents
-	 */
-	public void keyReleased(KeyEvent e) {
+        x += paddleDirectionX;
 
-		int key = e.getKeyCode();
+        if (x <= 4)
+            x = 4;
+        if (x >= FrameWidth - paddleWidth)
+            x = FrameWidth - paddleWidth;
 
-		if (key == KeyEvent.VK_LEFT) {
-			paddleDirectionX = 0;
-		}
+    }
 
-		if (key == KeyEvent.VK_RIGHT) {
-			paddleDirectionX = 0;
-		}
+    /**
+     * @param e set paddle directions by movents
+     */
+    public void keyReleased(KeyEvent e) {
 
-	}
+        int key = e.getKeyCode();
 
-	public static void setPaddlePosition(int dx) {
-		paddleDirectionX = dx;
+        if (key == KeyEvent.VK_LEFT) {
+            paddleDirectionX = 0;
+        }
 
-	}
+        if (key == KeyEvent.VK_RIGHT) {
+            paddleDirectionX = 0;
+        }
 
-	/**
-	 * default location of paddle
-	 */
-	public void resetState() {
+    }
 
-		x = (FrameWidth - paddleWidth) / 2;
-		y = FrameHeight - paddleHeigth * 3;
-	}
+    /**
+     * default location of paddle
+     */
+    public void resetState() {
 
-	Rectangle getRectPaddle() {
-		return new Rectangle(x, y, paddleWidth, paddleHeigth);
-	}
+        x = (FrameWidth - paddleWidth) / 2;
+        y = FrameHeight - paddleHeigth * 3;
+    }
 
-	/**
-	 * @param width
-	 *            set paddle witdh
-	 */
-	public static void setPaddleWidth(int width) {
-		paddleWidth = width;
-	}
+    Rectangle getRectPaddle() {
+        return new Rectangle(x, y, paddleWidth, paddleHeigth);
+    }
 
-	/**
-	 * @param g
-	 * @param panel
-	 */
-	public void paint(Graphics g, JPanel panel) {
-		Graphics2D g2d = (Graphics2D) g;
-		
-		Rectangle2D.Double rectangle = new Rectangle2D.Double(x, y, paddleWidth, paddleHeigth);
-		
-		g2d.setColor(Color.orange);
-		g2d.fill(rectangle);
-	}
+    /**
+     * @param g
+     * @param panel
+     */
+    public void paint(Graphics g, JPanel panel) {
+        Graphics2D g2d = (Graphics2D) g;
+
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(x, y, paddleWidth, paddleHeigth);
+
+        g2d.setColor(Color.orange);
+        g2d.fill(rectangle);
+    }
 }

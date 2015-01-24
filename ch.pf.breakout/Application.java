@@ -1,35 +1,33 @@
-import javax.swing.JFrame;
+import javax.swing.*;
 
 /**
- * @author Silas Stegmüller
- *
+ * @author Silas Stegmï¿½ller
  */
 public class Application implements BreakoutSettings {
 
-	public Application() {
+    public Application() {
 
-		JFrame frame = new JFrame();
-		frame.setSize(FrameWidth, FrameHeight);
-		frame.add(new Board());
-		frame.setTitle(GameName);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setResizable(false);
+        JFrame frame = new JFrame();
+        frame.setSize(FrameWidth, FrameHeight);
+        frame.add(new Board());
+        frame.setTitle(GameName);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
 
-		// place the window in the middle of the screen.
-		frame.setLocationRelativeTo(null);
+        // place the window in the middle of the screen.
+        frame.setLocationRelativeTo(null);
 
-		frame.setVisible(true);
+        frame.setVisible(true);
 
-	}
+    }
 
-	/**
-	 * @param args
-	 *            start Application Method
-	 */
-	public static void main(String[] args) {
+    /**
+     * @param args start Application Method
+     */
+    public static void main(String[] args) {
 
-		new Application();
+        new Application();
 
-	}
+    }
 
 }
